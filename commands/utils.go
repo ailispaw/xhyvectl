@@ -1,7 +1,6 @@
 package commands
 
 import (
-	"fmt"
 	"os"
 	"os/exec"
 	"os/user"
@@ -31,11 +30,12 @@ func Sudo(ctx *cobra.Command) {
 	log.Warn("Requires root permissions")
 	log.Warnf("Executes sudo %s", strings.Join(os.Args, " "))
 
-	out, err := exec.Command("sudo", os.Args...).Output()
-	if err != nil {
+	cmd := exec.Command("sudo", os.Args...)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err := cmd.Run(); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("%s", string(out))
 
 	os.Exit(0)
 }
