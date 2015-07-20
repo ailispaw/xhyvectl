@@ -1,0 +1,23 @@
+{
+	"ImportPath": "github.com/ailispaw/xhyvectl",
+	"GoVersion": "go1.4.2",
+	"Deps": [
+		{
+			"ImportPath": "github.com/inconshreveable/mousetrap",
+			"Rev": "76626ae9c91c4f2a10f34cad8ce83ea42c93bb75"
+		},
+		{
+			"ImportPath": "github.com/sirupsen/logrus",
+			"Comment": "v0.8.2",
+			"Rev": "98a1428efc3d732f9e377b50c8e2113e070896cf"
+		},
+		{
+			"ImportPath": "github.com/spf13/cobra",
+			"Rev": "385fc87e4343efec233811d3d933509e8975d11a"
+		},
+		{
+			"ImportPath": "github.com/spf13/pflag",
+			"Rev": "67cbc198fd11dab704b214c1e629a97af392c085"
+		}
+	]
+}

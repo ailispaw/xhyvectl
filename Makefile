@@ -1,12 +1,11 @@
 NAME := xhyvectl
 
 VERSION := 0.1.0
+GITSHA1 := `git rev-parse --short HEAD`
 
 PROJECT := github.com/ailispaw/$(NAME)
 
 WORKSPACE := `godep path`
-
-GIT_COMMIT := `git rev-parse --short HEAD`
 
 all: build
 
@@ -22,8 +21,8 @@ vet:
 test: restore
 	godep go test ./...
 
-build: fmt vet
-	go build -v
+build: fmt vet restore
+	godep go build -v -ldflags "-X $(PROJECT)/commands.VERSION '$(VERSION)' -X $(PROJECT)/commands.GITSHA1 '$(GITSHA1)'"
 
 install: build
 	@install -CSv $(NAME) $(GOPATH)/bin/
