@@ -2,7 +2,7 @@
 
 It's a package that contains a default configration and files for VM, like Vagrant's box. It is compressed by `tar` with `gzip`.
 
-## `<BOX NAME>.box`
+## `<BOX NAME>.xhv`
 
 It contains the following files.
 

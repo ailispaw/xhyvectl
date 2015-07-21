@@ -2,7 +2,7 @@
 
 ### `xhyvectl package <BOX NAME> <DIR>`
 
-Package `<DIR>/*` files into `<BOX NAME>.box`.
+Package `<DIR>/*` files into `<BOX NAME>.xhv`.
 
 ### `xhyvectl install <BOX NAME> <BOX FILE|URL>`
 
