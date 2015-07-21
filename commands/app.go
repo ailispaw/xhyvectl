@@ -14,6 +14,8 @@ const (
 var (
 	VERSION string
 	GITSHA1 string
+
+	boolVerbose, boolDebug bool
 )
 
 var app = &cobra.Command{
@@ -26,12 +28,23 @@ var app = &cobra.Command{
 }
 
 func init() {
+	flags := app.PersistentFlags()
+	flags.BoolVarP(&boolVerbose, "verbose", "V", false, "Print verbose messages")
+	flags.BoolVarP(&boolDebug, "debug", "D", false, "Print debug messages")
+
 	cobra.OnInitialize(Initialize)
 }
 
 func Initialize() {
 	log.SetOutput(os.Stderr)
 	log.SetLevel(log.WarnLevel)
+
+	if boolVerbose {
+		log.SetLevel(log.InfoLevel)
+	}
+	if boolDebug {
+		log.SetLevel(log.DebugLevel)
+	}
 }
 
 func Execute() {
