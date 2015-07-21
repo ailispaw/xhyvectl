@@ -48,6 +48,7 @@ func Initialize() {
 }
 
 func Execute() {
+	app.AddCommand(cmdPackage)
 	app.AddCommand(cmdVersion)
 	app.AddCommand(cmdVmnet)
 

@@ -3,6 +3,14 @@
 	"GoVersion": "go1.4.2",
 	"Deps": [
 		{
+			"ImportPath": "github.com/cheggaaa/pb",
+			"Rev": "e3e099c334cd89a6fe993f0683eaafd85604290f"
+		},
+		{
+			"ImportPath": "github.com/dustin/go-humanize",
+			"Rev": "c128122e0b9b93799aef8181a537e5d8fd7081d6"
+		},
+		{
 			"ImportPath": "github.com/inconshreveable/mousetrap",
 			"Rev": "76626ae9c91c4f2a10f34cad8ce83ea42c93bb75"
 		},
