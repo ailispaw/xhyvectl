@@ -16,7 +16,8 @@ import (
 )
 
 const (
-	CONFIG_FILE_NAME = "config.yml"
+	CONFIG_FILE_NAME   = "config.yml"
+	BOX_FILE_EXTENSION = ".xhv"
 )
 
 var (
@@ -41,7 +42,7 @@ func doPackage(ctx *cobra.Command, args []string) {
 		ErrorExit(ctx, "Needs two arguments to package <DIR>/* into <BOX NAME>.box")
 	}
 
-	boxName := args[0] + ".box"
+	boxName := args[0] + BOX_FILE_EXTENSION
 
 	if boxFi, err := os.Lstat(boxName); err == nil {
 		if boxFi.Mode().IsDir() {
