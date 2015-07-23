@@ -77,18 +77,18 @@ func doPackage(ctx *cobra.Command, args []string) {
 		log.Fatal(err)
 	}
 
-	boxfile, err := os.Create(boxName)
+	boxFile, err := os.Create(boxName)
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer boxfile.Close()
+	defer boxFile.Close()
 
-	var fileWriter io.WriteCloser = boxfile
-	fileWriter = gzip.NewWriter(boxfile)
+	var fileWriter io.WriteCloser = boxFile
+	fileWriter = gzip.NewWriter(boxFile)
 	defer fileWriter.Close()
 
-	boxfileWriter := tar.NewWriter(fileWriter)
-	defer boxfileWriter.Close()
+	boxFileWriter := tar.NewWriter(fileWriter)
+	defer boxFileWriter.Close()
 
 	var (
 		nFiles uint64 = 0
@@ -117,7 +117,7 @@ func doPackage(ctx *cobra.Command, args []string) {
 
 		size := uint64(fileInfo.Size())
 
-		if err := boxfileWriter.WriteHeader(header); err != nil {
+		if err := boxFileWriter.WriteHeader(header); err != nil {
 			log.Fatalf("Could not archive a file header: %s, error: %s", filePath, err)
 		}
 
@@ -130,13 +130,14 @@ func doPackage(ctx *cobra.Command, args []string) {
 		bar.Prefix(fmt.Sprintf("%-20s %6s ", fileInfo.Name(), humanize.Bytes(size)))
 		bar.Start()
 
-		barWriter := io.MultiWriter(boxfileWriter, bar)
+		barWriter := io.MultiWriter(boxFileWriter, bar)
 
 		if _, err = io.Copy(barWriter, file); err != nil {
 			log.Fatalf("Could not archive a file: %s, error: %s", filePath, err)
 		}
 
 		bar.Finish()
+		file.Close()
 
 		nFiles++
 		nTotal += size
