@@ -59,7 +59,7 @@ func parseDHCPdLeasesFile() ([]DHCPEntry, error) {
 	return dhcpEntries, scanner.Err()
 }
 
-func GetIPAddressFromMACAddress(mac string) (string, error) {
+func GetIPAddressByMACAddress(mac string) (string, error) {
 	dhcpEntries, err := parseDHCPdLeasesFile()
 	if err != nil {
 		return "", err
@@ -72,7 +72,7 @@ func GetIPAddressFromMACAddress(mac string) (string, error) {
 	return "", fmt.Errorf("Could not find an IP address for %s", mac)
 }
 
-func GetIPAddressFromName(name string) (string, error) {
+func GetIPAddressByName(name string) (string, error) {
 	dhcpEntries, err := parseDHCPdLeasesFile()
 	if err != nil {
 		return "", err

@@ -26,13 +26,13 @@ func testVmnet(ctx *cobra.Command, args []string) {
 
 	Sudo(ctx)
 
-	mac, err := vmnet.GetMACAddressFromUUID(args[0])
+	mac, err := vmnet.GetMACAddressByUUID(args[0])
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("MAC Address: %s\n", mac)
 
-	ip, err := vmnet.GetIPAddressFromMACAddress(mac)
+	ip, err := vmnet.GetIPAddressByMACAddress(mac)
 	if err != nil {
 		log.Fatal(err)
 	}

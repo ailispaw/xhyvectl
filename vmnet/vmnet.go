@@ -18,7 +18,7 @@ const (
 	NET_MASK_KEY = "Shared_Net_Mask"
 )
 
-func GetMACAddressFromUUID(uuid string) (string, error) {
+func GetMACAddressByUUID(uuid string) (string, error) {
 	mac := C.vmnet_get_mac_address_from_uuid(C.CString(uuid))
 	if mac == nil {
 		return "", fmt.Errorf("Could not get a MAC address for %s", uuid)
