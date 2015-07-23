@@ -39,7 +39,7 @@ func init() {
 
 func doPackage(ctx *cobra.Command, args []string) {
 	if len(args) < 2 {
-		ErrorExit(ctx, "Needs two arguments to package <DIR>/* into <BOX NAME>.box")
+		ErrorExit(ctx, "Needs two arguments to package <DIR>/* into <BOX NAME>.xhv")
 	}
 
 	boxName := args[0] + BOX_FILE_EXTENSION
