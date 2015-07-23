@@ -5,7 +5,9 @@ import (
 	"os/exec"
 	"os/user"
 	"strings"
+	"time"
 
+	"github.com/cheggaaa/pb"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
@@ -38,4 +40,15 @@ func Sudo(ctx *cobra.Command) {
 	}
 
 	os.Exit(0)
+}
+
+func SetupProgressBar(size int, prefix string) *pb.ProgressBar {
+	bar := pb.New(size)
+	bar.SetUnits(pb.U_BYTES)
+	bar.SetRefreshRate(time.Millisecond * 10)
+	bar.ShowCounters = false
+	bar.ShowFinalTime = false
+	bar.SetWidth(100)
+	bar.Prefix(prefix)
+	return bar
 }

@@ -7,9 +7,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"time"
 
-	"github.com/cheggaaa/pb"
 	"github.com/dustin/go-humanize"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -121,13 +119,8 @@ func doPackage(ctx *cobra.Command, args []string) {
 			log.Fatalf("Could not archive a file header: %s, error: %s", filePath, err)
 		}
 
-		bar := pb.New(int(size))
-		bar.SetUnits(pb.U_BYTES)
-		bar.SetRefreshRate(time.Millisecond * 10)
-		bar.ShowCounters = false
-		bar.ShowFinalTime = false
-		bar.SetWidth(100)
-		bar.Prefix(fmt.Sprintf("%-20s %6s ", fileInfo.Name(), humanize.Bytes(size)))
+		bar := SetupProgressBar(int(size),
+			fmt.Sprintf("%-20s %6s ", fileInfo.Name(), humanize.Bytes(size)))
 		bar.Start()
 
 		barWriter := io.MultiWriter(boxFileWriter, bar)
