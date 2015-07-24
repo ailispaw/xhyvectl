@@ -12,9 +12,10 @@ It contains the following files.
 type: linux
 
 # Boot configurations
-kernel: vmlinuz
-initrd: initrd.gz
-cmdline: earlyprintk=serial console=ttyS0 acpi=off
+boot:
+  kernel: vmlinuz
+  initrd: initrd.gz
+  cmdline: earlyprintk=serial console=ttyS0 acpi=off
 
 # SSH configurations
 ssh:
@@ -23,17 +24,16 @@ ssh:
   key-path:
 
 # VM configurations for xhyve arguments
-acpi: false
-cpus: 1
-memory: 1G
-hdd:
-  - "4,virtio-blk,disk.img"
-net:
+vm:
+  acpi: false
+  hdd:
+    - "4,virtio-blk,disk.img"
+  net:
     - "2:0,virtio-net"
-pci:
+  pci:
     - "0:0,hostbridge"
     - "31,lpc"
-lpc:
+  lpc:
     - "com1,stdio"
 ```
 

@@ -1,28 +1,32 @@
 # Commands
 
-### `xhyvectl package <BOX NAME> <DIR>`
+### `xhyvectl package <BOX NAME> <DIR> [--force|-f]`
 
 Package `<DIR>/*` files into `<BOX NAME>.xhv`.
 
-### `xhyvectl install <BOX NAME> <BOX FILE|URL>`
+### `xhyvectl box list`
+
+List installed boxes
+
+### `xhyvectl box install <BOX NAME> <BOX FILE|URL> [--force|-f]`
 
 Install a box file into your local HDD.  
-It will be placed at `~/.xhyvectl/boxes/<BOX NAME>/`.
+It will be `~/.xhyvectl/boxes/<BOX NAME>.xhv`.
 
-### `xhyvectl update <BOX NAME> <BOX FILE|URL>`
+### `xhyvectl box update <BOX NAME> <BOX FILE|URL>`
 
 Update/Replce the box with a box file.
 
-### `xhyvectl unintall <BOX NAME>`
+### `xhyvectl box unintall <BOX NAME>...`
 
-Remove a box from `~/.xhyvectl/boxes/`.
+Remove box(es) from `~/.xhyvectl/boxes/`.
 
-### `xhyvectl init <VM NAME> <BOX NAME>`
+### `xhyvectl init <VM NAME> <BOX NAME> [--force|-f]`
 
 Initialize a VM with `<BOX NAME>`.  
 It will be placed at `~/.xhyvectl/vms/<VM NAME>/`.
 
-### `xhyvectl up <VM NAME> [flag]...`
+### `xhyvectl up <VM NAME> [--cups|-c <# of CPUs>] [--memory|-m <Memory Size>]`
 
 Boot up a VM with parameters for xhyve
 
