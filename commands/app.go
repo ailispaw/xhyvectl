@@ -51,6 +51,7 @@ func Execute() {
 	app.AddCommand(cmdPackage)
 	app.AddCommand(cmdBox)
 	app.AddCommand(cmdInit)
+	app.AddCommand(cmdUp)
 	app.AddCommand(cmdVersion)
 	app.AddCommand(cmdVmnet)
 
