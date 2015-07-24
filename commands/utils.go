@@ -33,6 +33,7 @@ func Sudo(ctx *cobra.Command) {
 	log.Warnf("Executes sudo %s", strings.Join(os.Args, " "))
 
 	cmd := exec.Command("sudo", os.Args...)
+	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {
